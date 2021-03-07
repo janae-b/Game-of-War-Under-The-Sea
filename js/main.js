@@ -6,19 +6,19 @@ const CARD_VALUES = {
     "dA": 14 ,"dQ": 12, "dK": 13, "dJ": 11,"d10": 10,"d09": 9,"d08": 8,"d07":7,"d06":6,"d05":5,"d04":4,"d03":3,"d02":2,"hA":14,"hQ":12,"hK":13,"hJ":11,"h10":10,"h09":9,"h08":8,"h07":7,"h06":6,"h05":5,"h04":4,"h03":3,"h02":2,"cA":14,"cQ":12,"cK":13,"cJ":11,"c10":10,"c09":9,"c08":8,"c07":7,"c06":6,"c05":5,"c04":4,"c03":3,"c02":2,"sA":14,"sQ":12,"sK":13,"sJ":11,"s10":10,"s09":9,"s08":8,"s07":7,"s06":6,"s05":5,"s04":4,"s03":3,"s02":2
 }
 
-let deck1Drawn = []
-let deck2Drawn = []
+let drawnCard1 = []
+let drawnCard2 = []
 // let war1 = []
 // let war2 = []
-// let cardPicked1 = []
-// let cardPicked2 = []
+let cardPicked1 = []
+let cardPicked2 = []
 
 //Cached Element References
 
 let deck1El = document.getElementById('deck1')
 let deck2El = document.getElementById('deck2')
-let deck1DrawnEl = document.getElementById('deck1Drawn')
-let deck2DrawnEl = document.getElementById('deck2Drawn')
+let drawnCard1El = document.getElementById('drawnCard1')
+let drawnCard2El = document.getElementById('drawnCard2')
 // let war1El = document.getElementById('war1')
 // let war2El = document.getElementById('war2')
 let flipBtn = document.getElementById('btn')
@@ -70,61 +70,60 @@ let deck2 = fullDeck.splice(-halfOfDeck)
           cardPicked1 = deck1.splice(0, 1);
           console.log(`Player1 card is  + ${cardPicked1}`)
           // Add the picked card to deck 2
-          deck1Drawn.push(cardPicked1)
-          console.log(deck1Drawn)}
+          drawnCard1.push(cardPicked1)
+          console.log(drawnCard1)}
          if (deck2.length > 0) {
            cardPicked2 = deck2.splice(0, 1);
            console.log(`Player2 card is + ${cardPicked2}`)
-           deck2Drawn.push(cardPicked2)
-           console.log(deck2Drawn)
+           drawnCard2.push(cardPicked2)
+           console.log(drawnCard2)
          }
           render(cardPicked1, cardPicked2)
         }
       
 
-      function render(cardPicked1) {
-        if (deck1Drawn.length === 1) {
-            deck1DrawnEl.classList.remove('outline')
+      function render(cardPicked1, cardPicked2) {
+        let cardToRemove1
+        let cardToRemove2  
+        //Player1      
+        if (drawnCard1.length === 1) {
+            drawnCard1El.classList.remove('outline')
         }  
-        
-        if (deck1Drawn.length > 1) {
-              deck1DrawnEl.classList.remove(cardToRemove)
+        //remove previous card's CSS Selector
+        if (drawnCard1.length > 1) {
+              drawnCard1El.classList.remove(cardToRemove1)
           }
           cardToRemove = cardPicked1
-          deck1DrawnEl.classList.add(cardPicked1)
-        //   if (deck1Drawn.length === 26) {
-        //       deck1DrawnEl.classList.add('shadow')
-        //       deck1El.classList.remove('shadow')
-        //   }
-        //   if (deck1.length === 0) {
-        //       deck1El.classList.add('outline')
-        //       deck1El.classList.remove('back-blue')
-        //   }
+          drawnCard1El.classList.add(cardPicked1)
+          if (drawnCard1.length === 26) {
+              drawnCard1El.classList.add('shadow')
+              deck1El.classList.remove('shadow')
+          }
+          if (deck1.length === 0) {
+              deck1El.classList.add('outline')
+              deck1El.classList.remove('back-blue')
+          }
+       //Player 2       
+        if (drawnCard2.length === 1) {
+            drawnCard2El.classList.remove('outline')
+        }  
+        
+        if (drawnCard2.length > 1) {
+              drawnCard2El.classList.remove(cardToRemove2)
+          }
+          cardToRemove = cardPicked2
+          drawnCard2El.classList.add(cardPicked2)
+          if (drawnCard2.length === 26) {
+              drawnCard2El.classList.add('shadow')
+              deck2El.classList.remove('shadow')
+          }
+          if (deck2.length === 0) {
+              deck2El.classList.add('outline')
+              deck2El.classList.remove('back-blue')
+          }
+
       }
-    //   function render(cardPicked){
-    //     // Removes the card outline for deck1 on first card draw
-    //     if (deck1Drawn.length === 1) {
-    //       deck1DrawnEl.classList.remove('outline')
-    //     }
-    //     // Remove the previous card's CSS selector
-    //     if (deck1Drawn.length > 1) {
-    //       deck1DrawnEl.classList.remove(cardToRemove)
-    //     }
-    //     // Store the card to remove next round as a variable
-    //     cardToRemove = cardPicked
-    //     // Add cardPicked CSS selector to deck2
-    //     deck1DrawnEl.classList.add(cardPicked)
-    //     // Adjusting shadow when halfway through the deck
-    //     if (deck1Drawn.length === 26) {
-    //       deck1Drawn.classList.add('shadow')
-    //       deck1El.classList.remove('shadow')
-    //     }
-    //     // Remove the card deck color and add an outline to deck 1
-    //     if (deck1.length === 0) {
-    //       deck1El.classList.add('outline')
-    //       deck1El.classList.remove('back-blue')
-    //     }
-    //   }
+    
     // WORK ON function isRoundWinner(card1, card2) {
             //return CARD_VALUES[card1.value] 
     //     if (isRoundWinner(deck1Drawn, deck2Drawn)) {
