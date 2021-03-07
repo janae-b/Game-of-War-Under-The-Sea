@@ -8,19 +8,22 @@ const CARD_VALUES = {
 
 let deck1Drawn = []
 let deck2Drawn = []
-let war1 = []
-let war2 = []
+// let war1 = []
+// let war2 = []
+// let cardPicked1 = []
+// let cardPicked2 = []
+
 //Cached Element References
 
 let deck1El = document.getElementById('deck1')
 let deck2El = document.getElementById('deck2')
 let deck1DrawnEl = document.getElementById('deck1Drawn')
 let deck2DrawnEl = document.getElementById('deck2Drawn')
-let war1El = document.getElementById('war1')
-let war2El = document.getElementById('war2')
+// let war1El = document.getElementById('war1')
+// let war2El = document.getElementById('war2')
 let flipBtn = document.getElementById('btn')
-let restartBtn = document.getElementById('restartBtn')
-let messageDiv = document.getElementById('message')
+// let restartBtn = document.getElementById('restartBtn')
+// let messageDiv = document.getElementById('message')
 
 //Event Listeners
 
@@ -51,25 +54,93 @@ let halfOfDeck = Math.floor(fullDeck.length / 2)
 let deck1 = fullDeck.splice(halfOfDeck)
 let deck2 = fullDeck.splice(-halfOfDeck)
 
-function handleClick() {
-    let cardPicked1 = deck1.shift()
-    let cardPicked2 = deck2.shift()
-    console.log(cardPicked1)  
-    console.log(cardPicked2)  
-    deck1Drawn.push(cardPicked1)
-    deck2Drawn.push(cardPicked2)
-    console.log(deck1Drawn)
-    if (isRoundWinner(cardPicked1, cardPicked2)) {
-       messageDiv.innerText = "Player 1 wins this round" 
-    } else {
-        messageDiv.innerText = "Player 2 wins this round"
-    }
-}
+// function handleClick() {
+//     let cardPicked1 = deck1.shift()
+//     let cardPicked2 = deck2.shift()
+//     console.log(cardPicked1)  
+//     console.log(cardPicked2)  
+//     deck1Drawn.push(cardPicked1)
+//     deck2Drawn.push(cardPicked2)
+//     console.log(deck1Drawn)
+//     console.log(deck2Drawn)
 
- function isRoundWinner(cardOne, cardTwo) {
-     return CARD_VALUES[cardOne.value] < CARD_VALUES[cardTwo.value]
- }
-console.log("puppies")
+    function handleClick(){
+        if (deck1.length > 0) {
+          // Assign a random card to a variable
+          cardPicked1 = deck1.splice(0, 1);
+          console.log(`Player1 card is  + ${cardPicked1}`)
+          // Add the picked card to deck 2
+          deck1Drawn.push(cardPicked1)
+          console.log(deck1Drawn)}
+         if (deck2.length > 0) {
+           cardPicked2 = deck2.splice(0, 1);
+           console.log(`Player2 card is + ${cardPicked2}`)
+           deck2Drawn.push(cardPicked2)
+           console.log(deck2Drawn)
+         }
+          render(cardPicked1, cardPicked2)
+        }
+      
+
+      function render(cardPicked1) {
+        if (deck1Drawn.length === 1) {
+            deck1DrawnEl.classList.remove('outline')
+        }  
+        
+        if (deck1Drawn.length > 1) {
+              deck1DrawnEl.classList.remove(cardToRemove)
+          }
+          cardToRemove = cardPicked1
+          deck1DrawnEl.classList.add(cardPicked1)
+        //   if (deck1Drawn.length === 26) {
+        //       deck1DrawnEl.classList.add('shadow')
+        //       deck1El.classList.remove('shadow')
+        //   }
+        //   if (deck1.length === 0) {
+        //       deck1El.classList.add('outline')
+        //       deck1El.classList.remove('back-blue')
+        //   }
+      }
+    //   function render(cardPicked){
+    //     // Removes the card outline for deck1 on first card draw
+    //     if (deck1Drawn.length === 1) {
+    //       deck1DrawnEl.classList.remove('outline')
+    //     }
+    //     // Remove the previous card's CSS selector
+    //     if (deck1Drawn.length > 1) {
+    //       deck1DrawnEl.classList.remove(cardToRemove)
+    //     }
+    //     // Store the card to remove next round as a variable
+    //     cardToRemove = cardPicked
+    //     // Add cardPicked CSS selector to deck2
+    //     deck1DrawnEl.classList.add(cardPicked)
+    //     // Adjusting shadow when halfway through the deck
+    //     if (deck1Drawn.length === 26) {
+    //       deck1Drawn.classList.add('shadow')
+    //       deck1El.classList.remove('shadow')
+    //     }
+    //     // Remove the card deck color and add an outline to deck 1
+    //     if (deck1.length === 0) {
+    //       deck1El.classList.add('outline')
+    //       deck1El.classList.remove('back-blue')
+    //     }
+    //   }
+    // WORK ON function isRoundWinner(card1, card2) {
+            //return CARD_VALUES[card1.value] 
+    //     if (isRoundWinner(deck1Drawn, deck2Drawn)) {
+    //     messageDiv.innerText = "Player 1 wins this round" 
+    //     deck1
+    //     } else {
+    //     messageDiv.innerText = "Player 2 wins this round"
+    //     }
+    // }
+
+
+//  function isRoundWinner(card, card2) {
+//      return CARD_VALUES[card.value] < CARD_VALUES[card2.value]
+//  }
+
+// 
 
 //  pop() {
 //      return this.deck1.shift()
@@ -85,5 +156,8 @@ console.log("puppies")
 //      score1El = deck1.length
 //      score2El = deck2.length
 //  } 
-    
+// Game Over function
+// function gameOver(x) {
+//     return x.numberOfCards === 0
+// }    
     // Call render function (refresh card being displayed)
