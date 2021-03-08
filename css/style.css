@@ -22,9 +22,10 @@ html {
   /* Use a system font, if none are available use an available sans-sarif   font */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    margin: auto;
-    background-image: linear-gradient(to top, #43aa8b, #0095a6, #2c79a8, #64598a, #713e5a);
+   margin: auto;
+   background-image: linear-gradient(to top, #43aa8b, #0095a6, #2c79a8, #64598a, #713e5a);
    background-size: cover;
-   align-items: center;
-  }
-
+   display: flex
+   flex-direction: cloumn;
+   text-align: center
+ }

@@ -16,6 +16,8 @@ let war1 = []
 let war2 = []
 let cardPicked1  
 let cardPicked2 
+//let player1War
+//let player2War
 // let cardToRemove1 
 // let cardToRemove2 
 
@@ -66,18 +68,18 @@ let deck2 = fullDeck.splice(-halfOfDeck)
         if (deck1.length > 0) {
           // Assign a random card to a variable
           cardPicked1 = deck1.splice(0, 1);
-          console.log(`Player1 card is  + ${cardPicked1}`)
+          console.log(`Player1 card is ${cardPicked1}`)
           // Add the picked card to deck 2
           drawnCard1.push(cardPicked1)
           console.log(drawnCard1)}
          if (deck2.length > 0) {
            cardPicked2 = deck2.splice(0, 1);
-           console.log(`Player2 card is + ${cardPicked2}`)
+           console.log(`Player2 card is ${cardPicked2}`)
            drawnCard2.push(cardPicked2)
            console.log(drawnCard2)
          }
           render(cardPicked1, cardPicked2)
-        //   roundWinner(cardPicked1, cardPicked2)
+          roundWinner(cardPicked1, cardPicked2)
         //   console.log(roundWinner)
         }
 
@@ -120,19 +122,44 @@ let deck2 = fullDeck.splice(-halfOfDeck)
               deck2El.classList.remove('back-blue')
           }    
     }  
+//-----------------------------------roundWinner
+          function roundWinner(card1, card2) {
+              console.log("function roundWinner triggered")
 
-        //   function roundWinner(card, card2) {
-        //     if (CARD_VALUES[card.value] < CARD_VALUES[card2.value]) {
-        //         console.log(CARD_VALUES[card.value])
-        //         messageDiv.innerText = "Player 1 wins this round"
-        //         deck1.push(card, card2)
-        //     } else if (CARD_VALUES[card.value] > CARD_VALUES[card2.value]) {
-        //         messageDiv.innerText = "Player 2 wins this round"
-        //         deck2.push(card, card2)
-        //     } else {
-        //         messageDiv.innerText = "WAR!!!!!"
-        //     }
-        // }
+              const card1Value = CARD_VALUES[card1]
+              const card2Value = CARD_VALUES[card2]
+            //   console.log(`card1.value: ${card1}`)
+            //   console.log(`CARD_VALUES[card1]: ${CARD_VALUES[card1]}`)
+            //   console.log(`cardValue1: ${card1Value}`)
+            if (card1Value < card2Value) {
+              player1HighCard(card1, card2)
+               
+            } else if (card1Value > card2Value) {
+                player2HighCard(card1, card2)
+            } else {
+                cardsTie(card1, card2)
+            }
+        }
+        
+        function player1HighCard(card1, card2) {
+            messageDiv.innerText = "Player 1 wins this round"
+            console.log(`deck1.length before: ${deck1.length}`);
+            deck1.push(card1, card2)
+            console.log(`deck1.length after: ${deck1.length}`);
+        }
+
+        function player2HighCard(card1, card2) {
+            messageDiv.innerText = "Player 2 wins this round"
+            console.log(`deck2.length before: ${deck2.length}`);
+            deck2.push(card1, card2)
+            console.log(`deck2.length after: ${deck2.length}`);
+        } 
+
+        function cardsTie(card1, card2) {
+            messageDiv.innerText = "WAR!!!!!"
+            //add more for the War
+        }
+
                 
        
             
