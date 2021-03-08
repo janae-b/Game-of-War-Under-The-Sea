@@ -6,12 +6,18 @@ const CARD_VALUES = {
     "dA": 14 ,"dQ": 12, "dK": 13, "dJ": 11,"d10": 10,"d09": 9,"d08": 8,"d07":7,"d06":6,"d05":5,"d04":4,"d03":3,"d02":2,"hA":14,"hQ":12,"hK":13,"hJ":11,"h10":10,"h09":9,"h08":8,"h07":7,"h06":6,"h05":5,"h04":4,"h03":3,"h02":2,"cA":14,"cQ":12,"cK":13,"cJ":11,"c10":10,"c09":9,"c08":8,"c07":7,"c06":6,"c05":5,"c04":4,"c03":3,"c02":2,"sA":14,"sQ":12,"sK":13,"sJ":11,"s10":10,"s09":9,"s08":8,"s07":7,"s06":6,"s05":5,"s04":4,"s03":3,"s02":2
 }
 
-let drawnCard1 = []
+console.log(CARD_VALUES)
+
+
+
+let drawnCard1 = [] 
 let drawnCard2 = []
-// let war1 = []
-// let war2 = []
-let cardPicked1 = []
-let cardPicked2 = []
+let war1 = []
+let war2 = []
+let cardPicked1  
+let cardPicked2 
+// let cardToRemove1 
+// let cardToRemove2 
 
 //Cached Element References
 
@@ -23,15 +29,15 @@ let drawnCard2El = document.getElementById('drawnCard2')
 // let war2El = document.getElementById('war2')
 let flipBtn = document.getElementById('btn')
 // let restartBtn = document.getElementById('restartBtn')
-// let messageDiv = document.getElementById('message')
+let messageDiv = document.getElementById('message')
 
-//Event Listeners
+//Event Listeners-----------------------------------//
 
-flipBtn.addEventListener('click', handleClick)
+flipBtn.addEventListener('click', drawClick)
 // restartBtn.addEventListener('click' init)
 // Functions
 
-
+//-------------------Shuffle---------------//
 
 function shuffle(fullDeck) {
     let currentIndex = fullDeck.length, temporaryValue, randomIndex;
@@ -49,22 +55,14 @@ function shuffle(fullDeck) {
 }
 
 shuffle(fullDeck)
-    
+//-----------Splitting the big deck into two decks---------//    
 let halfOfDeck = Math.floor(fullDeck.length / 2)
 let deck1 = fullDeck.splice(halfOfDeck)
 let deck2 = fullDeck.splice(-halfOfDeck)
 
-// function handleClick() {
-//     let cardPicked1 = deck1.shift()
-//     let cardPicked2 = deck2.shift()
-//     console.log(cardPicked1)  
-//     console.log(cardPicked2)  
-//     deck1Drawn.push(cardPicked1)
-//     deck2Drawn.push(cardPicked2)
-//     console.log(deck1Drawn)
-//     console.log(deck2Drawn)
+//-------------Drawing the two cards---------//
 
-    function handleClick(){
+    function drawClick(){
         if (deck1.length > 0) {
           // Assign a random card to a variable
           cardPicked1 = deck1.splice(0, 1);
@@ -79,23 +77,24 @@ let deck2 = fullDeck.splice(-halfOfDeck)
            console.log(drawnCard2)
          }
           render(cardPicked1, cardPicked2)
+        //   roundWinner(cardPicked1, cardPicked2)
+        //   console.log(roundWinner)
         }
-      
+
+//----------------Render-------------------------//
 
       function render(cardPicked1, cardPicked2) {
-        let cardToRemove1
-        let cardToRemove2  
         //Player1      
         if (drawnCard1.length === 1) {
             drawnCard1El.classList.remove('outline')
         }  
         //remove previous card's CSS Selector
         if (drawnCard1.length > 1) {
-              drawnCard1El.classList.remove(cardToRemove1)
+              drawnCard1El.classList.remove(drawnCard1[drawnCard1.length -2])
           }
-          cardToRemove = cardPicked1
+    
           drawnCard1El.classList.add(cardPicked1)
-          if (drawnCard1.length === 26) {
+          if (drawnCard1.length === 13) {
               drawnCard1El.classList.add('shadow')
               deck1El.classList.remove('shadow')
           }
@@ -109,46 +108,41 @@ let deck2 = fullDeck.splice(-halfOfDeck)
         }  
         
         if (drawnCard2.length > 1) {
-              drawnCard2El.classList.remove(cardToRemove2)
+              drawnCard2El.classList.remove(drawnCard2[drawnCard2.length -2])
           }
-          cardToRemove = cardPicked2
           drawnCard2El.classList.add(cardPicked2)
-          if (drawnCard2.length === 26) {
+          if (drawnCard2.length === 13) {
               drawnCard2El.classList.add('shadow')
               deck2El.classList.remove('shadow')
           }
           if (deck2.length === 0) {
               deck2El.classList.add('outline')
               deck2El.classList.remove('back-blue')
-          }
+          }    
+    }  
 
-      }
+        //   function roundWinner(card, card2) {
+        //     if (CARD_VALUES[card.value] < CARD_VALUES[card2.value]) {
+        //         console.log(CARD_VALUES[card.value])
+        //         messageDiv.innerText = "Player 1 wins this round"
+        //         deck1.push(card, card2)
+        //     } else if (CARD_VALUES[card.value] > CARD_VALUES[card2.value]) {
+        //         messageDiv.innerText = "Player 2 wins this round"
+        //         deck2.push(card, card2)
+        //     } else {
+        //         messageDiv.innerText = "WAR!!!!!"
+        //     }
+        // }
+                
+       
+            
     
-    // WORK ON function isRoundWinner(card1, card2) {
-            //return CARD_VALUES[card1.value] 
-    //     if (isRoundWinner(deck1Drawn, deck2Drawn)) {
-    //     messageDiv.innerText = "Player 1 wins this round" 
-    //     deck1
-    //     } else {
-    //     messageDiv.innerText = "Player 2 wins this round"
-    //     }
-    // }
 
 
-//  function isRoundWinner(card, card2) {
-//      return CARD_VALUES[card.value] < CARD_VALUES[card2.value]
-//  }
+
+
 
 // 
-
-//  pop() {
-//      return this.deck1.shift()
-//  }
-
-//  push() {
-//      return this.deck1.push()
-//  }
- 
 
 // Function for keeping the score 
 //  function keepingScore () {
