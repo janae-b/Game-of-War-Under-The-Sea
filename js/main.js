@@ -141,7 +141,6 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
             }
 
         }
-
         
         function player1HighCard(card1, card2) {
             messageDiv.innerText = "Player 1 wins this round"
@@ -173,6 +172,8 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
                  console.log(`The player two war Draw Pile is ${warDrawnCardPileP2}`)
                }
                warRender(warCardPickedP1, warCardPickedP2)
+               warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
+               
         }
         
         function warRender(warCardPickedP1, warCardPickedP2) {
@@ -203,13 +204,32 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
                   deckP2El.classList.remove('back-blue')
               }    
         } 
-        // function keepingScore() {
+
+        function warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2) {
+            console.log("function warRoundWinner triggered")
+            const warCard1Value = CARD_VALUES[warCardPickedP1]
+            const warCard2Value = CARD_VALUES[warCardPickedP2]
+          if (warCard1Value < warCard2Value) {
+            messageDiv.innerText = "Player 1 wins this war!"
+            console.log(`deck1.length before: ${deckP1.length}`);
+            deckP1.push(warCardPickedP1, warCardPickedP2, card1, card2)
+            console.log(`deck1.length after: ${deckP1.length}`);
+        }  else if (warCard1Value > warCard2Value) {
+            messageDiv.innerText = "Player 2 wins this war!"
+            console.log(`deck2.length before: ${deckP2.length}`);
+            deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
+            console.log(`deck1.length after: ${deckP1.length}`);
+          } else {
+              messageDiv.innerText = "War again? Player 2 can win this round"
+              deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
+          }
+      }
+      // function keepingScore() {
         //     score1El = deck1.length
         //     console.log(deck1.length)
         //     score2El = deck2.length
         //     console.log(deck2.length)
         // }
-
         function isGameOver(fullDeck) {
             return fullDeck.length === 0
         }
