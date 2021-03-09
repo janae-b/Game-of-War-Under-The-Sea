@@ -13,8 +13,8 @@ let warDrawnCardPileP1 = []
 let warDrawnCardPileP2 = []
 let cardPickedP1  
 let cardPickedP2 
-//let warCardPickedP1
-//let warCardPickedP2
+let warCardPickedP1
+let warCardPickedP2
 // let cardToRemove1 
 // let cardToRemove2 
 
@@ -127,8 +127,7 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
 
               const card1Value = CARD_VALUES[card1]
               const card2Value = CARD_VALUES[card2]
-              const cardWar1Value = CARD_VALUES[war1]
-              const cardWar2Value = CARD_VALUES[war2]
+            
             //   console.log(`card1.value: ${card1}`)
             //   console.log(`CARD_VALUES[card1]: ${CARD_VALUES[card1]}`)
             //   console.log(`cardValue1: ${card1Value}`)
@@ -157,12 +156,28 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
             deckP2.push(card1, card2)
             console.log(`deck2.length after: ${deckP2.length}`);
         } 
-
+//---------------Drawing for the War Card-------------------------
         function cardsTie(card1, card2) {
+            console.log("function cardsTie triggered")
             messageDiv.innerText = "WAR!!!!!"
-            warWinner(war1, war2)
+            if (deckP1.length > 0) {
+                // Assign a random card to a variable
+                warCardPickedP1 = deckP1.splice(0, 1);
+                console.log(`Player1 card is ${warCardPickedP1}`)
+                // Add the picked card to deck 2
+                warDrawnCardPileP1.push(cardPickedP1)
+                console.log(warDrawnCardPileP1)}
+                deckP1.push(card1, card2)
+               if (deckP2.length > 0) {
+                 warCardPickedP2 = deckP2.splice(0, 1);
+                 console.log(`Player2 card is ${warCardPickedP2}`)
+                 warDrawnCardPileP2.push(warCardPickedP2)
+                 console.log(warDrawnCardPileP2)
+                 deckP1.push(card1, card2)
+                 console.log(deckP1)
+               }
         }
-
+        
         // function keepingScore() {
         //     score1El = deck1.length
         //     console.log(deck1.length)
@@ -170,8 +185,8 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
         //     console.log(deck2.length)
         // }
 
-        function isGameOver(deck) {
-            return deck.length === 0
+        function isGameOver(fullDeck) {
+            return fullDeck.length === 0
         }
 
                 
