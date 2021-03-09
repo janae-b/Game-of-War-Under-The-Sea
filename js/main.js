@@ -173,7 +173,7 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
                }
                warRender(warCardPickedP1, warCardPickedP2)
                warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
-               
+               removeWarCards()
         }
         
         function warRender(warCardPickedP1, warCardPickedP2) {
@@ -224,6 +224,15 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
           }
       }
+
+      function removeWarCards () {
+            if (warDrawnCardPileP1.length === 1) {
+                warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1)
+            }
+            if (warDrawnCardPileP2.length === 1) {
+                warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2)
+            }
+        }
       // function keepingScore() {
         //     score1El = deck1.length
         //     console.log(deck1.length)
