@@ -25,7 +25,4 @@ html {
    margin: auto;
    background-image: linear-gradient(to top, #43aa8b, #0095a6, #2c79a8, #64598a, #713e5a);
    background-size: cover;
-   display: flex
-   flex-direction: cloumn;
-   text-align: center
  }
