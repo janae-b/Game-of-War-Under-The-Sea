@@ -18,13 +18,13 @@ let warCardPickedP2
 // let cardToRemove1 
 // let cardToRemove2 
 
-//Cached Element References
+//---------------------------------Cached Element References
 
 let deckP1El = document.getElementById('deckP1')
 let deckP2El = document.getElementById('deckP2')
 let drawnCardPileP1El = document.getElementById('drawnCardPileP1')
 let drawnCardPileP2El = document.getElementById('drawnCardPileP2')
-let scoreP1El = document.getElementById('ScoreP1')
+let scoreP1El = document.getElementById('scoreP1')
 let scoreP2El = document.getElementById('scoreP2')
 let warDrawnCardPileP1El = document.getElementById('warDrawnCardPileP1')
 let warDrawnCardPileP2El = document.getElementById('warDrawnCardPileP2')
@@ -124,22 +124,21 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
 //-----------------------------------roundWinner
           function roundWinner(card1, card2) {
               console.log("function roundWinner triggered")
-
               const card1Value = CARD_VALUES[card1]
               const card2Value = CARD_VALUES[card2]
-            
             //   console.log(`card1.value: ${card1}`)
             //   console.log(`CARD_VALUES[card1]: ${CARD_VALUES[card1]}`)
             //   console.log(`cardValue1: ${card1Value}`)
             if (card1Value < card2Value) {
               player1HighCard(card1, card2)
-               
+              updateScores ()
             } else if (card1Value > card2Value) {
                 player2HighCard(card1, card2)
+                updateScores ()
             } else {
                 cardsTie(card1, card2)
-            }
-
+                updateScores ()
+            }      
         }
         
         function player1HighCard(card1, card2) {
@@ -173,7 +172,7 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
                }
                warRender(warCardPickedP1, warCardPickedP2)
                warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
-               removeWarCards()
+            //    removeWarCards()
         }
         
         function warRender(warCardPickedP1, warCardPickedP2) {
@@ -233,15 +232,19 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
                 warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2)
             }
         }
-      // function keepingScore() {
-        //     score1El = deck1.length
-        //     console.log(deck1.length)
-        //     score2El = deck2.length
-        //     console.log(deck2.length)
-        // }
-        function isGameOver(fullDeck) {
-            return fullDeck.length === 0
+              
+        function updateScores () {
+            scoreP1El.innerHTML = `Player 1 Score: ${deckP1.length}`
+            console.log(deckP1.length)
+            scoreP2El.innerHTML = `Player 2 Score: ${deckP2.length}`
+            console.log(deckP2.length)
         }
+
+        // function isGameOver(fullDeck) {
+        //   return fullDeck.length === 0
+        // }
+
+
 
                 
        
@@ -252,15 +255,4 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
 
 
 
-// 
 
-// Function for keeping the score 
-//  function keepingScore () {
-//      score1El = deck1.length
-//      score2El = deck2.length
-//  } 
-// Game Over function
-// function gameOver(x) {
-//     return x.numberOfCards === 0
-// }    
-    // Call render function (refresh card being displayed)

@@ -15,7 +15,10 @@
   <link rel="stylesheet" href="css/cardstarter.css"></link>
   
 <link rel="stylesheet" href="css/style.css"></link>
-
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css"
+  />
     <title>The Game of War</title>
 </head>
 <h1>War -- The Card Game</h1>
@@ -24,19 +27,19 @@
     <main>
         <section class="cards">
                 <div class="war">
-                    <div id="warDrawnCardPileP1" class="card small outline"></div>
-                    <div id="warDrawnCardPileP2" class="card small outline"></div><br>
+                    <div id="warDrawnCardPileP2" class="card small outline"></div>
+                    <div id="warDrawnCardPileP1" class="card small outline"></div><br>
                 </div>
                 <div class="draw">
-                    <div id="drawnCardPileP1" class="card small outline"></div>
-                    <div id="drawnCardPileP2" class="card small outline"></div><br>
+                    <div id="drawnCardPileP2" class="card small outline"></div>
+                    <div id="drawnCardPileP1" class="card small outline"></div><br>
                 </div>
                 <div class="decks">
                     <div id="deckP1" class="card small back-blue shadow"></div>
-                    <!-- <h3 id="scoreP1">Player 1 Score: </h3>   -->
-                    <div id="deckP2" class="card small back-red shadow"></div><br>
-                    <!-- <h3 id="scoreP2">Player 2 Score: </h3>  -->
+                    <div id="deckP2" class="card small back-red shadow"></div><br> 
                 </div>
+                <h3 id="scoreP1">Player 1 Score: </h3>  
+                <h3 id="scoreP2">Player 2 Score: </h3>
             </section>
         </section>
     </main>
@@ -44,15 +47,6 @@
            <button id="btn" class="btn btn-info">Draw</button>
            <button id="restartBtn" class="btn btn-warning">Restart</button>
        </div>
-       <script 
-       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-       crossorigin="anonymous"
-     ></script>
-     <script 
-       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-       crossorigin="anonymous"
-     ></script>
+      
 </body>
 </html>
