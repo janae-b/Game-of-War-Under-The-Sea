@@ -161,23 +161,48 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
             console.log("function cardsTie triggered")
             messageDiv.innerText = "WAR!!!!!"
             if (deckP1.length > 0) {
-                // Assign a random card to a variable
                 warCardPickedP1 = deckP1.splice(0, 1);
                 console.log(`Player1 card is ${warCardPickedP1}`)
-                // Add the picked card to deck 2
-                warDrawnCardPileP1.push(cardPickedP1)
-                console.log(warDrawnCardPileP1)}
-                deckP1.push(card1, card2)
-               if (deckP2.length > 0) {
+                warDrawnCardPileP1.push(warCardPickedP1)
+                console.log(warDrawnCardPileP1)
+                }
+            if (deckP2.length > 0) {
                  warCardPickedP2 = deckP2.splice(0, 1);
                  console.log(`Player2 card is ${warCardPickedP2}`)
                  warDrawnCardPileP2.push(warCardPickedP2)
-                 console.log(warDrawnCardPileP2)
-                 deckP1.push(card1, card2)
-                 console.log(deckP1)
+                 console.log(`The player two war Draw Pile is ${warDrawnCardPileP2}`)
                }
+               warRender(warCardPickedP1, warCardPickedP2)
         }
         
+        function warRender(warCardPickedP1, warCardPickedP2) {
+            //Player 1
+            console.log("warRender is Triggered")     
+            if (warDrawnCardPileP1.length === 1) {
+                warDrawnCardPileP1El.classList.remove('outline')
+            }  
+            //remove previous card's CSS Selector
+            if (warDrawnCardPileP1.length > 1) {
+                  warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1[warDrawnCardPileP1.length -2])
+              }
+              warDrawnCardPileP1El.classList.add(warCardPickedP1)
+              if (deckP1.length === 0) {
+                  deckP1El.classList.add('outline')
+                  deckP1El.classList.remove('back-blue')
+              }
+           //Player 2       
+            if (warDrawnCardPileP2.length === 1) {
+                warDrawnCardPileP2El.classList.remove('outline')
+            }  
+            if (warDrawnCardPileP2.length > 1) {
+                warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2[warDrawnCardPileP2.length -2])
+              }
+              warDrawnCardPileP2El.classList.add(warCardPickedP2)
+              if (deckP2.length === 0) {
+                  deckP2El.classList.add('outline')
+                  deckP2El.classList.remove('back-blue')
+              }    
+        } 
         // function keepingScore() {
         //     score1El = deck1.length
         //     console.log(deck1.length)
