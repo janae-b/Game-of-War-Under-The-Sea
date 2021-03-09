@@ -9,12 +9,12 @@ const CARD_VALUES = {
 
 let drawnCardPileP1 = [] 
 let drawnCardPileP2 = []
-let warDrawnCardPile1 = []
-let warDrawnCardPile2 = []
+let warDrawnCardPileP1 = []
+let warDrawnCardPileP2 = []
 let cardPickedP1  
 let cardPickedP2 
-//let player1War
-//let player2War
+//let warCardPickedP1
+//let warCardPickedP2
 // let cardToRemove1 
 // let cardToRemove2 
 
@@ -26,8 +26,8 @@ let drawnCardPileP1El = document.getElementById('drawnCardPileP1')
 let drawnCardPileP2El = document.getElementById('drawnCardPileP2')
 let scoreP1El = document.getElementById('ScoreP1')
 let scoreP2El = document.getElementById('scoreP2')
-// let warDrawnCardPileP1El = document.getElementById('warDrawnCardPileP1')
-// let warDrawnCardPileP2El = document.getElementById('warDrawnCardPileP2')
+let warDrawnCardPileP1El = document.getElementById('warDrawnCardPileP1')
+let warDrawnCardPileP2El = document.getElementById('warDrawnCardPileP2')
 let drawBtn = document.getElementById('btn')
 // let restartBtn = document.getElementById('restartBtn')
 let messageDiv = document.getElementById('message')
