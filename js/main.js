@@ -37,7 +37,7 @@ let messageDiv = document.getElementById('message')
 //---------------Event Listeners------------------------//
 
 drawBtn.addEventListener('click', drawClick)
-// shuffleBtn.addEventListener('click', function)
+shuffleBtn.addEventListener('click', startShuffle)
 // Functions
 
 //-------------------Shuffle---------------//
@@ -231,7 +231,7 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             deckP2.concat(p2RewardCards)
             console.log(`deck2.length after: ${deckP2.length}`);
           } else {
-              messageDiv.innerText = "War again? Player 🐙 stole the cards"
+              messageDiv.innerText = "War again? Player 🐙 stole the cards!!!"
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
           }
       }
@@ -261,7 +261,18 @@ deckP2 = fullDeck.splice(-halfOfDeck)
         }
           
 
-
+        function startShuffle () {
+            let newDeck = []
+            newDeck.push(...deckP1,...deckP2)
+            shuffle(newDeck)
+            let halfOfDeck = Math.floor(newDeck.length / 2)
+            deckP1 = newDeck.splice(halfOfDeck)
+            deckP2 = newDeck.splice(-halfOfDeck)
+            warDrawnCardPileP1
+            console.log(deckP1)
+            console.log(deckP2)
+            updateScores()
+        }
 
         // function init() {
         //     fullDeck
