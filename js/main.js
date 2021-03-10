@@ -1,4 +1,4 @@
-//variables & constants
+//----------------variables & constants---------------------
 
 let fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
@@ -15,10 +15,12 @@ let cardPickedP1
 let cardPickedP2 
 let warCardPickedP1
 let warCardPickedP2
+// let deckP2 = []
+// let deckP1 = []
 // let cardToRemove1 
 // let cardToRemove2 
 
-//---------------------------------Cached Element References
+//----------------Cached Element References-----------------
 
 let deckP1El = document.getElementById('deckP1')
 let deckP2El = document.getElementById('deckP2')
@@ -29,13 +31,13 @@ let scoreP2El = document.getElementById('scoreP2')
 let warDrawnCardPileP1El = document.getElementById('warDrawnCardPileP1')
 let warDrawnCardPileP2El = document.getElementById('warDrawnCardPileP2')
 let drawBtn = document.getElementById('btn')
-// let restartBtn = document.getElementById('restartBtn')
+let restartBtn = document.getElementById('restartBtn')
 let messageDiv = document.getElementById('message')
 
-//Event Listeners-----------------------------------//
+//---------------Event Listeners------------------------//
 
 drawBtn.addEventListener('click', drawClick)
-// restartBtn.addEventListener('click' init)
+// restartBtn.addEventListener('click', init)
 // Functions
 
 //-------------------Shuffle---------------//
@@ -53,13 +55,16 @@ function shuffle(fullDeck) {
     }
 
     return fullDeck;
+    console.log(fullDeck)
 }
 
+// function init() {
 shuffle(fullDeck)
 //-----------Splitting the big deck into two decks---------//    
 let halfOfDeck = Math.floor(fullDeck.length / 2)
-let deckP1 = fullDeck.splice(halfOfDeck)
-let deckP2 = fullDeck.splice(-halfOfDeck)
+deckP1 = fullDeck.splice(halfOfDeck)
+deckP2 = fullDeck.splice(-halfOfDeck)
+// }
 
 //-------------Drawing the two cards---------//
 
@@ -82,7 +87,7 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
         //   console.log(roundWinner)
         }
 
-//----------------Render-------------------------//
+//------------------------Render----------------------//
 
       function render(cardPickedP1, cardPickedP2) {
         //Player1      
@@ -121,7 +126,7 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
               deckP2El.classList.remove('back-blue')
           }    
     }  
-//-----------------------------------roundWinner
+//---------------------roundWinner-------------------------
           function roundWinner(card1, card2) {
               console.log("function roundWinner triggered")
               const card1Value = CARD_VALUES[card1]
@@ -239,13 +244,24 @@ let deckP2 = fullDeck.splice(-halfOfDeck)
             scoreP2El.innerHTML = `Player 2 Score: ${deckP2.length}`
             console.log(deckP2.length)
         }
-
-        // function isGameOver(fullDeck) {
+        
+        // function isGameOver(deckP1, deckP2) {
         //   return fullDeck.length === 0
         // }
 
 
-
+        // function init() {
+        //     fullDeck
+        //     shuffle(fullDeck)
+        //     console.log(shuffle(fullDeck))
+        //     // let halfOfDeck = Math.floor(fullDeck.length / 2)
+        //     // deckP1 = fullDeck.splice(halfOfDeck)
+        //     // deckP2 = fullDeck.splice(-halfOfDeck)
+        //     // drawnCardPileP1 = [] 
+        //     // drawnCardPileP2 = []
+        //     // warDrawnCardPileP1 = []
+        //     // warDrawnCardPileP2 = []
+        // }
                 
        
             

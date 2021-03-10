@@ -1,21 +1,19 @@
 body {
-  /* Use a system font, if none are available use an available sans-sarif   font */
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-      font-size: small;
-   margin: auto;
-   background-image: linear-gradient(to top, #43aa8b, #0095a6, #2c79a8, #64598a, #713e5a);
+   background-image: url(blue_water.jpg);
+   /* background-image: linear-gradient(to bottom, #051937, #523758, #945c6e, #c98d80, #edc79b); */
    background-size: cover;
  }
 
  h1{
     display: flex;
     justify-content: center; 
+    font-size: smaller;
 }
 
 h2{
     display: flex;
     justify-content: center;
+    font-size: smaller;
 }
 .cards {
    margin-top: -200px;
@@ -28,10 +26,10 @@ h2{
   
 }
 h1 h2 {
-    font-size: x-small;
+    font-size: small;
 }
 h3 {
-    font-size: x-small;
+    font-size: small;
 }
 
 .decks {
@@ -49,5 +47,6 @@ h3 {
 #buttons {
     display: flex;
     justify-content: center;
-    height: 7vh;
+    margin: 0 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }
