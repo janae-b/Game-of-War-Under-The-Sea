@@ -31,13 +31,13 @@ let scoreP2El = document.getElementById('scoreP2')
 let warDrawnCardPileP1El = document.getElementById('warDrawnCardPileP1')
 let warDrawnCardPileP2El = document.getElementById('warDrawnCardPileP2')
 let drawBtn = document.getElementById('btn')
-let restartBtn = document.getElementById('restartBtn')
+let shuffleBtn = document.getElementById('shuffleBtn')
 let messageDiv = document.getElementById('message')
 
 //---------------Event Listeners------------------------//
 
 drawBtn.addEventListener('click', drawClick)
-// restartBtn.addEventListener('click', init)
+// shuffleBtn.addEventListener('click', function)
 // Functions
 
 //-------------------Shuffle---------------//
