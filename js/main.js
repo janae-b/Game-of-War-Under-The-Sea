@@ -147,14 +147,14 @@ deckP2 = fullDeck.splice(-halfOfDeck)
         }
         
         function player1HighCard(card1, card2) {
-            messageDiv.innerText = "Player 1 wins this round"
+            messageDiv.innerText = "Player 🦀 wins this round"
             console.log(`deck1.length before: ${deckP1.length}`);
             deckP1.push(card1, card2)
             console.log(`deck1.length after: ${deckP1.length}`);
         }
 
         function player2HighCard(card1, card2) {
-            messageDiv.innerText = "Player 2 wins this round"
+            messageDiv.innerText = "Player 🐙 wins this round"
             console.log(`deck2.length before: ${deckP2.length}`);
             deckP2.push(card1, card2)
             console.log(`deck2.length after: ${deckP2.length}`);
@@ -214,17 +214,17 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             const warCard1Value = CARD_VALUES[warCardPickedP1]
             const warCard2Value = CARD_VALUES[warCardPickedP2]
           if (warCard1Value < warCard2Value) {
-            messageDiv.innerText = "Player 1 wins this war!"
+            messageDiv.innerText = "Player 🦀 wins this war!"
             console.log(`deck1.length before: ${deckP1.length}`);
             deckP1.push(warCardPickedP1, warCardPickedP2, card1, card2)
             console.log(`deck1.length after: ${deckP1.length}`);
         }  else if (warCard1Value > warCard2Value) {
-            messageDiv.innerText = "Player 2 wins this war!"
+            messageDiv.innerText = "Player 🐙 wins this war!"
             console.log(`deck2.length before: ${deckP2.length}`);
             deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
             console.log(`deck1.length after: ${deckP1.length}`);
           } else {
-              messageDiv.innerText = "War again? Player 2 can win this round"
+              messageDiv.innerText = "War again? Player 🐙 stole the cards"
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
           }
       }
@@ -239,9 +239,9 @@ deckP2 = fullDeck.splice(-halfOfDeck)
         }
               
         function updateScores () {
-            scoreP1El.innerHTML = `Player 1 Score: ${deckP1.length}`
+            scoreP1El.innerHTML = `Player 🦀 Score: ${deckP1.length}`
             console.log(deckP1.length)
-            scoreP2El.innerHTML = `Player 2 Score: ${deckP2.length}`
+            scoreP2El.innerHTML = `Player 🐙 Score: ${deckP2.length}`
             console.log(deckP2.length)
         }
         
