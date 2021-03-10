@@ -55,7 +55,7 @@ function shuffle(fullDeck) {
     }
 
     return fullDeck;
-    console.log(fullDeck)
+    
 }
 
 // function init() {
@@ -219,13 +219,17 @@ deckP2 = fullDeck.splice(-halfOfDeck)
           if (warCard1Value < warCard2Value) {
             messageDiv.innerText = "Player 🦀 wins this war!"
             console.log(`deck1.length before: ${deckP1.length}`);
+            p1RewardCards = deckP2.splice(0,3)
             deckP1.push(warCardPickedP1, warCardPickedP2, card1, card2)
+            deckP1.concat(p1RewardCards)
             console.log(`deck1.length after: ${deckP1.length}`);
         }  else if (warCard1Value > warCard2Value) {
             messageDiv.innerText = "Player 🐙 wins this war!"
             console.log(`deck2.length before: ${deckP2.length}`);
+            p2RewardCards = deckP1.splice(0,3)
             deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
-            console.log(`deck1.length after: ${deckP1.length}`);
+            deckP2.concat(p2RewardCards)
+            console.log(`deck2.length after: ${deckP2.length}`);
           } else {
               messageDiv.innerText = "War again? Player 🐙 stole the cards"
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
