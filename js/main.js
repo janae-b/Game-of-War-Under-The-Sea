@@ -37,7 +37,7 @@ let messageDiv = document.getElementById('message')
 //---------------Event Listeners------------------------//
 
 drawBtn.addEventListener('click', drawClick)
-shuffleBtn.addEventListener('click', startShuffle)
+shuffleBtn.addEventListener('click', newShuffle)
 // Functions
 
 //-------------------Shuffle---------------//
@@ -69,6 +69,7 @@ deckP2 = fullDeck.splice(-halfOfDeck)
 //-------------Drawing the two cards---------//
 
     function drawClick(){
+        removeWarCards()
         if (deckP1.length > 0) {
           // Assign a random card to a variable
           cardPickedP1 = deckP1.splice(0, 1);
@@ -237,13 +238,26 @@ deckP2 = fullDeck.splice(-halfOfDeck)
       }
 
       function removeWarCards () {
-            if (warDrawnCardPileP1.length === 1) {
-                warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1)
-            }
-            if (warDrawnCardPileP2.length === 1) {
-                warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2)
-            }
+        if (warDrawnCardPileP1.length === 1) {
+            warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1)
+            warDrawnCardPileP1El.classList.add('outline')
         }
+        if (warDrawnCardPileP2.length === 1) {
+            warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2)
+            warDrawnCardPileP2El.classList.add('outline')
+        }
+    }
+
+    function removeRegularCards () {
+        if (drawnCardPileP1.length >= 1) {
+            drawnCardPileP1El.classList.remove(drawnCardPileP1)
+            drawnCardPileP1El.classList.add('outline')
+        }
+        if (drawnCardPileP2.length >= 1) {
+            drawnCardPileP2El.classList.remove(drawnCardPileP2)
+            drawnCardPileP2El.classList.add('outline')
+        }
+    }
               
         function updateScores () {
             scoreP1El.innerHTML = `Player 🦀 Score: ${deckP1.length}`
@@ -261,7 +275,10 @@ deckP2 = fullDeck.splice(-halfOfDeck)
         }
           
 
-        function startShuffle () {
+        function newShuffle () {
+            removeWarCards()
+            removeRegularCards()
+            console.log("Trigger Remove Regular Cards")
             let newDeck = []
             newDeck.push(...deckP1,...deckP2)
             shuffle(newDeck)
