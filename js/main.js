@@ -136,13 +136,16 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             //   console.log(`cardValue1: ${card1Value}`)
             if (card1Value < card2Value) {
               player1HighCard(card1, card2)
-              updateScores ()
+              updateScores()
+              isGameOver()
             } else if (card1Value > card2Value) {
                 player2HighCard(card1, card2)
-                updateScores ()
+                updateScores()
+                isGameOver()
             } else {
                 cardsTie(card1, card2)
-                updateScores ()
+                updateScores()
+                isGameOver()
             }      
         }
         
@@ -245,9 +248,15 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             console.log(deckP2.length)
         }
         
-        // function isGameOver(deckP1, deckP2) {
-        //   return fullDeck.length === 0
-        // }
+        function isGameOver() {
+            if (deckP1.length === 0) {
+                messageDiv.innerHTML = "Player 🐙 is the Champion!"
+            } else if (deckP2.length === 0) {
+                messageDiv.innerHTML = "Player 🦀 is the Champion!"
+            }
+        }
+          
+
 
 
         // function init() {
