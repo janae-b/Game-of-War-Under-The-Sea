@@ -15,10 +15,9 @@ let cardPickedP1
 let cardPickedP2 
 let warCardPickedP1
 let warCardPickedP2
-// let deckP2 = []
-// let deckP1 = []
-// let cardToRemove1 
-// let cardToRemove2 
+let deckP2 = []
+let deckP1 = []
+
 
 //----------------Cached Element References-----------------
 
@@ -66,8 +65,8 @@ deckP1 = fullDeck.splice(halfOfDeck)
 deckP2 = fullDeck.splice(-halfOfDeck)
 // }
 setTimeout (function() {
-    deckP2El.classList.add('animate__flip')
-    deckP1El.classList.add('animate__flip')
+    deckP2El.classList.replace('animate__flip', 'animate__flip')
+    deckP1El.classList.replace('animate__flip', 'animate__flip')
     }, 1000)
 //-------------Drawing the two cards---------//
 
@@ -195,8 +194,9 @@ setTimeout (function() {
             if (warDrawnCardPileP1.length > 1) {
                   warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1[warDrawnCardPileP1.length -2])
               }
+              warDrawnCardPileP1El.classList.add(warCardPickedP1, 'animate__flipInY')
               setTimeout (function() {
-                warDrawnCardPileP1El.classList.add(warCardPickedP1, 'animate__flipInY')
+                warDrawnCardPileP1El.classList.remove('animate__flipInY')
                 }, 1000)
               if (deckP1.length === 0) {
                   deckP1El.classList.add('outline')
@@ -208,8 +208,10 @@ setTimeout (function() {
             }  
             if (warDrawnCardPileP2.length > 1) {
                 warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2[warDrawnCardPileP2.length -2])
-              } setTimeout (function() {
+              } 
               warDrawnCardPileP2El.classList.add(warCardPickedP2, 'animate__flipInY')
+              setTimeout (function() {
+              warDrawnCardPileP2El.classList.remove('animate__flipInY')
               }, 1000)
               if (deckP2.length === 0) {
                   deckP2El.classList.add('outline')
@@ -245,7 +247,7 @@ setTimeout (function() {
               console.log(deckP2)
           }
       }
-
+//-----------------Removing cards------------------
       function removeWarCards () {
         if (warDrawnCardPileP1.length > 0) {
             setTimeout (function() {
@@ -263,12 +265,16 @@ setTimeout (function() {
 
     function removeRegularCards () {
         if (drawnCardPileP1.length > 0) {
-            drawnCardPileP1El.classList.remove(drawnCardPileP1)
-            drawnCardPileP1El.classList.add('outline')
-        }
+            setTimeout (function() {
+            drawnCardPileP1El.classList.remove(drawnCardPileP1[drawnCardPileP1.length -2])
+            drawnCardPileP1El.classList.add('outline', 'animate__flipOutY')
+        }, 1000)
+    }
         if (drawnCardPileP2.length > 0) {
-            drawnCardPileP2El.classList.remove(drawnCardPileP2)
-            drawnCardPileP2El.classList.add('outline')
+            setTimeout (function() {
+            drawnCardPileP2El.classList.remove(drawnCardPileP2[drawnCardPileP2.length -2])
+            drawnCardPileP2El.classList.add('outline', 'animate__flipOutY')
+           }, 1000)
         }
     }
               

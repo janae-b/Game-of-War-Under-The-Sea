@@ -7,16 +7,13 @@ body {
    align-content: flex-start;
  }
 
- h1{
+ h2{
     display: flex;
-    justify-content: center; 
-    font-size: 60px;
-    text-shadow: black;
-}
-
-h2{
-    display: flex;
+    font-size: medium;
     justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
 .cards {
    
@@ -27,25 +24,29 @@ h2{
    align-content: center;
    
 }
-h1 h2 {
-    font-size: large;
-}
+
 h3 {
-    font-size: medium;
-    
+    font-size: small;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
 
 .decks {
-    flex: 1; 
-    
+    flex: 1;
+    margin: -30px;
 }
 
 .draw {
     flex: 1;
+    margin: -10px;
 }
 
 .war {
     flex: 1;
+    margin-top: 0px;
+    margin-bottom: -30px;
 }
 
 #buttons {
@@ -55,14 +56,13 @@ h3 {
 
 #btn {
     text-align: center;
-    margin: 10px;
-    padding: 10px 
+    margin: 5px;
+    padding: 5px 
     
 }
 
 #shuffleBtn {
     display: flex;
-    
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     }
