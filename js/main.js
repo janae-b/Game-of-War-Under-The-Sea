@@ -44,17 +44,14 @@ shuffleBtn.addEventListener('click', newShuffle)
 function shuffle(fullDeck) {
     let currentIndex = fullDeck.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
- 
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
- 
+
         temporaryValue = fullDeck[currentIndex];
         fullDeck[currentIndex] = fullDeck[randomIndex]
         fullDeck[randomIndex] = temporaryValue
     }
- 
     return fullDeck;
- 
 }
  
 // function init() {
@@ -63,10 +60,10 @@ shuffle(fullDeck)
 let halfOfDeck = Math.floor(fullDeck.length / 2)
 deckP1 = fullDeck.splice(halfOfDeck)
 deckP2 = fullDeck.splice(-halfOfDeck)
-// }
+
  
-    deckP2El.classList.replace('animate__flip', 'animate__flip')
-    deckP1El.classList.replace('animate__flip', 'animate__flip')
+deckP2El.classList.replace('animate__flip', 'animate__flip')
+deckP1El.classList.replace('animate__flip', 'animate__flip')
  
 //-------------Drawing the two cards---------//
  
@@ -88,7 +85,7 @@ deckP2 = fullDeck.splice(-halfOfDeck)
           render(cardPickedP1, cardPickedP2)
           roundWinner(cardPickedP1, cardPickedP2)
         //   console.log(roundWinner)
-        }
+    }
  
 //------------------------Render----------------------//
  
@@ -98,7 +95,7 @@ deckP2 = fullDeck.splice(-halfOfDeck)
         if (drawnCardPileP1.length > 0) {
             drawnCardPileP1El.classList.remove('outline')
         }  
-        //remove previous card's CSS Selector
+        
         if (drawnCardPileP1.length > 1) {
               drawnCardPileP1El.classList.remove(drawnCardPileP1[drawnCardPileP1.length -2])
           }
@@ -129,7 +126,7 @@ deckP2 = fullDeck.splice(-halfOfDeck)
               deckP2El.classList.add('outline')
               deckP2El.classList.remove('back-blue')
           }    
-    }  
+     }  
 //---------------------roundWinner-------------------------
           function roundWinner(card1, card2) {
               console.log("function roundWinner triggered")
@@ -152,71 +149,58 @@ deckP2 = fullDeck.splice(-halfOfDeck)
  
         function player1HighCard(card1, card2) {
             messageDiv.innerText = "Player 🦀 wins this round"
-            console.log(`deck1.length before: ${deckP1.length}`);
             deckP1.push(card1, card2)
-            console.log(`deck1.length after: ${deckP1.length}`);
         }
- 
         function player2HighCard(card1, card2) {
             messageDiv.innerText = "Player 🐙 wins this round"
-            console.log(`deck2.length before: ${deckP2.length}`);
             deckP2.push(card1, card2)
-            console.log(`deck2.length after: ${deckP2.length}`);
         } 
 //---------------Drawing for the War Card-------------------------
         function cardsTie(card1, card2) {
-            console.log("function cardsTie triggered")
             messageDiv.innerText = "WAR!!!!!"
             if (deckP1.length > 0) {
                 warCardPickedP1 = deckP1.splice(0, 1);
-                console.log(`Player1 card is ${warCardPickedP1}`)
                 warDrawnCardPileP1.push(warCardPickedP1)
-                console.log(warDrawnCardPileP1)
-                }
+            }
             if (deckP2.length > 0) {
                  warCardPickedP2 = deckP2.splice(0, 1);
-                 console.log(`Player2 card is ${warCardPickedP2}`)
                  warDrawnCardPileP2.push(warCardPickedP2)
-                 console.log(`The player two war Draw Pile is ${warDrawnCardPileP2}`)
-               }
-               warRender(warCardPickedP1, warCardPickedP2)
-               warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
-               removeWarCards()
+            }
+            warRender(warCardPickedP1, warCardPickedP2)
+            warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
         }
  
         function warRender(warCardPickedP1, warCardPickedP2) {
-            //Player 1
-            console.log("warRender is Triggered")     
+            //Player 1  
             if (warDrawnCardPileP1.length > 0 ) {
                 warDrawnCardPileP1El.classList.remove('outline')
             }  
             //remove previous card's CSS Selector
             if (warDrawnCardPileP1.length > 1) {
                   warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1[warDrawnCardPileP1.length -2])
-              }
+            }
               warDrawnCardPileP1El.classList.add(warCardPickedP1, 'animate__flipInY')
               setTimeout (function() {
                 warDrawnCardPileP1El.classList.remove('animate__flipInY')
-                }, 1000)
-              if (deckP1.length === 0) {
+              }, 1000)
+            if (deckP1.length === 0) {
                   deckP1El.classList.add('outline')
                   deckP1El.classList.remove('back-blue')
-              }
+            }
            //Player 2       
             if (warDrawnCardPileP2.length > 0) {
                 warDrawnCardPileP2El.classList.remove('outline')
             }  
             if (warDrawnCardPileP2.length > 1) {
                 warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2[warDrawnCardPileP2.length -2])
-              } 
+            } 
               warDrawnCardPileP2El.classList.add(warCardPickedP2, 'animate__flipInY')
-              setTimeout (function() {
               warDrawnCardPileP2El.classList.remove('animate__flipInY')
-              }, 1000)
-              if (deckP2.length === 0) {
+             
+            if (deckP2.length === 0) {
                   deckP2El.classList.add('outline')
                   deckP2El.classList.remove('back-blue')
-              }    
+            }    
         } 
  
         function warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2) {
@@ -224,7 +208,9 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             const warCard1Value = CARD_VALUES[warCardPickedP1]
             const warCard2Value = CARD_VALUES[warCardPickedP2]
           if (warCard1Value < warCard2Value) {
+          setTimeout (function() {
             messageDiv.innerText = "Player 🦀 wins this war!"
+          }, 1000)
             console.log(`deck1.length before: ${deckP1.length}`);
             // p1RewardCards = deckP2.splice(0,3)
             deckP1.push(warCardPickedP1, warCardPickedP2, card1, card2)
@@ -232,36 +218,37 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             console.log(deckP1)
             console.log(`deck1.length after: ${deckP1.length}`);
         }  else if (warCard1Value > warCard2Value) {
+          setTimeout (function() {  
             messageDiv.innerText = "Player 🐙 wins this war!"
-            console.log(`deck2.length before: ${deckP2.length}`);
+          }, 1000)
             // p2RewardCards = deckP1.splice(0,3)
             deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
             // deckP2.push(p2RewardCards)
             console.log(`deck2.length after: ${deckP2.length}`);
           } else {
+            setTimeout (function() { 
               messageDiv.innerText = "War again? Player 🐙 stole the cards!!!"
+            }, 1000)
             //   p2RewardCards = deckP1.splice(0,3)
-            //   console.log(p2RewardCards)
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
             //   deckP2.push(p2RewardCards)
-              console.log(deckP2)
           }
       }
 //-----------------Removing cards------------------
-      function removeWarCards () {
+    function removeWarCards () {
         if (warDrawnCardPileP1.length > 0) {
             setTimeout (function() {
                 warDrawnCardPileP1El.classList.remove(warDrawnCardPileP1[0])
                 warDrawnCardPileP1El.classList.add('outline', 'animate__flipOutY')
                 warDrawnCardPileP1 = [];
-                }, 3000)
+                }, 1000)
         }
         if (warDrawnCardPileP2.length > 0) {
             setTimeout (function() {
                 warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2[0])
                 warDrawnCardPileP2El.classList.add('outline', 'animate__flipOutY')
                 warDrawnCardPileP2 = [];
-            }, 3000)
+            }, 1000)
         }
     }
  
@@ -270,21 +257,21 @@ deckP2 = fullDeck.splice(-halfOfDeck)
             setTimeout (function() {
             drawnCardPileP1El.classList.add( 'animate__flipOutY', 'outline')
             drawnCardPileP1El.classList.remove(drawnCardPileP1[drawnCardPileP1.length - 1])
+            drawnCardPileP1 = [];
         }, 1000)
     }
         if (drawnCardPileP2.length > 0) {
             setTimeout (function() {
             drawnCardPileP2El.classList.add('animate__flipOutY', 'outline')
             drawnCardPileP2El.classList.remove(drawnCardPileP2[drawnCardPileP2.length - 1])
+            drawnCardPileP2 = [];
            }, 1000)
         }
     }
  
         function updateScores () {
             scoreP1El.innerHTML = `Player 🦀 Score: ${deckP1.length}`
-            console.log(deckP1.length)
             scoreP2El.innerHTML = `Player 🐙 Score: ${deckP2.length}`
-            console.log(deckP2.length)
         }
  
         function isGameOver() {
@@ -299,19 +286,14 @@ deckP2 = fullDeck.splice(-halfOfDeck)
         function newShuffle () {
             removeWarCards()
             removeRegularCards()
-            console.log("Trigger Remove Regular Cards")
             let newDeck = []
             newDeck.push(...deckP1,...deckP2)
             shuffle(newDeck)
             let halfOfDeck = Math.floor(newDeck.length / 2)
             deckP1 = newDeck.splice(halfOfDeck)
             deckP2 = newDeck.splice(-halfOfDeck)
-            console.log(deckP1)
-            console.log(deckP2)
             updateScores()
-            deckP2El.classList.replace('animate__flip', 'animate__flip')
-            deckP1El.classList.replace('animate__flip', 'animate__flip')
-        }
+       }
 
         
 

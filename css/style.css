@@ -1,74 +1,87 @@
 body {
-   background-image: url(blue_water.jpg);
-   /* background-image: linear-gradient(to bottom, #051937, #523758, #945c6e, #c98d80, #edc79b); */
-   background-size: cover;
-   font-family: 'Montserrat', sans-serif;
-   font-weight: bold;
-   align-content: flex-start;
+    background-image: url(blue_water.jpg);
+    /* background-image: linear-gradient(to bottom, #051937, #523758, #945c6e, #c98d80, #edc79b); */
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    align-content: flex-start;
+  }
+ 
+h2{
+     display: flex;
+     font-size: medium;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+     text-align: center;
+   }
+
+ .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
  }
 
- h2{
-    display: flex;
-    font-size: medium;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-}
-.cards {
-   
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   align-content: center;
-   
-}
+ .scores {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     align-content: center;
+     justify-content: center;
+     padding: 10px;
+ }
 
-h3 {
-    font-size: small;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-}
+ #scoreP1 {
+     margin: 10px;
+     margin-top: 0;
+ }
 
-.decks {
-    flex: 1;
-    margin: -30px;
-}
+ #scoreP2 {
+     margin:  10px; 
+     margin-top: 0;
+ }
 
-.draw {
-    flex: 1;
-    margin: -10px;
-}
-
-.war {
-    flex: 1;
-    margin-top: 0px;
-    margin-bottom: -30px;
-}
-
-#buttons {
-    display: flex;
-    justify-content: center;
-}
-
-#btn {
-    text-align: center;
-    margin: 5px;
-    padding: 5px 
-    
-}
-
-#shuffleBtn {
-    display: flex;
-    margin: 5px;
-    padding: 5px;
-    }
-
-#endGameBtn {
-    display: flex;
-    margin: 5px;
-    padding: 5px;
-}
+ h3 {
+     font-size: small;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+     text-align: center;
+ }
+ 
+ .decks {
+     flex: 1;
+     margin: -30px;
+ }
+ 
+ .draw {
+     flex: 1;
+     margin: -10px;
+ }
+ 
+ .war {
+     flex: 1;
+     margin-top: 0px;
+     margin-bottom: -30px;
+ }
+ 
+ #buttons {
+     display: flex;
+     justify-content: center;
+ }
+ 
+ #btn {
+     text-align: center;
+     margin: 5px;
+     padding: 5px 
+     
+ }
+ 
+ #shuffleBtn {
+     display: flex;
+     margin: 5px;
+     padding: 5px;
+     }
