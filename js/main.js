@@ -32,11 +32,12 @@ let warDrawnCardPileP2El = document.getElementById('warDrawnCardPileP2')
 let drawBtn = document.getElementById('btn')
 let shuffleBtn = document.getElementById('shuffleBtn')
 let messageDiv = document.getElementById('message')
- 
+let endGameBtn = document.getElementById('endGameBtn') 
 //---------------Event Listeners------------------------//
  
 drawBtn.addEventListener('click', drawClick)
 shuffleBtn.addEventListener('click', newShuffle)
+endGameBtn.addEventListener('click', endGame)
 // Functions
  
 //-------------------Shuffle---------------//
@@ -53,9 +54,9 @@ function shuffle(fullDeck) {
     }
     return fullDeck;
 }
- 
-// function init() {
+//----------------------Beginning of game------------//
 shuffle(fullDeck)
+
 //-----------Splitting the big deck into two decks---------//    
 let halfOfDeck = Math.floor(fullDeck.length / 2)
 deckP1 = fullDeck.splice(halfOfDeck)
@@ -129,7 +130,6 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
      }  
 //---------------------roundWinner-------------------------
           function roundWinner(card1, card2) {
-              console.log("function roundWinner triggered")
               const card1Value = CARD_VALUES[card1]
               const card2Value = CARD_VALUES[card2]
             if (card1Value < card2Value) {
@@ -293,6 +293,23 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             deckP1 = newDeck.splice(halfOfDeck)
             deckP2 = newDeck.splice(-halfOfDeck)
             updateScores()
+            drawBtn.disabled = false
+       }
+
+       function endGame () {
+           if (deckP1.length > deckP2.length) {
+               deckP1.push(...deckP2)
+               deckP2 = []
+               updateScores()
+               isGameOver()
+               drawBtn.disabled = true
+           } else if (deckP1.length < deckP2.length) {
+               deckP2.push(...deckP1)
+               deckP1 = []
+               updateScores()
+               isGameOver()
+               drawBtn.disabled = true
+           }
        }
 
         
