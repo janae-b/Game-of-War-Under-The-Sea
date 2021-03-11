@@ -181,7 +181,7 @@ setTimeout (function() {
                }
                warRender(warCardPickedP1, warCardPickedP2)
                warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
-            //    removeWarCards()
+               removeWarCards()
         }
         
         function warRender(warCardPickedP1, warCardPickedP2) {
@@ -266,8 +266,8 @@ setTimeout (function() {
     function removeRegularCards () {
         if (drawnCardPileP1.length > 0) {
             setTimeout (function() {
-            drawnCardPileP1El.classList.remove(drawnCardPileP1[drawnCardPileP1.length -2])
             drawnCardPileP1El.classList.add('outline', 'animate__flipOutY')
+            drawnCardPileP1El.classList.remove(drawnCardPileP1[drawnCardPileP1.length -2])
         }, 1000)
     }
         if (drawnCardPileP2.length > 0) {
