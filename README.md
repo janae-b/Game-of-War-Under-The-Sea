@@ -31,3 +31,4 @@ JavaScript, HTML, CSS
 * Include audio
 * Add more “splash” to the cards
 * Have more cards be removed from the decks when war is won
+* End Game button for longer games
