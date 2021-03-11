@@ -298,7 +298,6 @@ setTimeout (function() {
             let halfOfDeck = Math.floor(newDeck.length / 2)
             deckP1 = newDeck.splice(halfOfDeck)
             deckP2 = newDeck.splice(-halfOfDeck)
-            warDrawnCardPileP1
             console.log(deckP1)
             console.log(deckP2)
             updateScores()
