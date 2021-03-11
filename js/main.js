@@ -64,10 +64,10 @@ let halfOfDeck = Math.floor(fullDeck.length / 2)
 deckP1 = fullDeck.splice(halfOfDeck)
 deckP2 = fullDeck.splice(-halfOfDeck)
 // }
-setTimeout (function() {
+
     deckP2El.classList.replace('animate__flip', 'animate__flip')
     deckP1El.classList.replace('animate__flip', 'animate__flip')
-    }, 1000)
+    
 //-------------Drawing the two cards---------//
 
     function drawClick(){
@@ -120,7 +120,7 @@ setTimeout (function() {
         if (drawnCardPileP2.length > 1) {
             drawnCardPileP2El.classList.remove(drawnCardPileP2[drawnCardPileP2.length -2])
           }
-          drawnCardPileP2El.classList.add(cardPickedP2,'animate__flip')
+          drawnCardPileP2El.classList.add(cardPickedP2,)
           if (drawnCardPileP2.length === 13) {
             drawnCardPileP2El.classList.add('shadow')
               deckP2El.classList.remove('shadow')
@@ -260,20 +260,21 @@ setTimeout (function() {
                 warDrawnCardPileP2El.classList.remove(warDrawnCardPileP2)
                 warDrawnCardPileP2El.classList.add('outline', 'animate__flipOutY')
             }, 1000)
+            warDrawnCardPileP1El.style.background-image
         }
     }
 
     function removeRegularCards () {
         if (drawnCardPileP1.length > 0) {
             setTimeout (function() {
-            drawnCardPileP1El.classList.add('outline', 'animate__flipOutY')
+            drawnCardPileP1El.classList.add( 'animate__flipOutY', 'outline')
             drawnCardPileP1El.classList.remove(drawnCardPileP1[drawnCardPileP1.length -2])
         }, 1000)
     }
         if (drawnCardPileP2.length > 0) {
             setTimeout (function() {
+            drawnCardPileP2El.classList.add('animate__flipOutY', 'outline')
             drawnCardPileP2El.classList.remove(drawnCardPileP2[drawnCardPileP2.length -2])
-            drawnCardPileP2El.classList.add('outline', 'animate__flipOutY')
            }, 1000)
         }
     }
@@ -307,11 +308,13 @@ setTimeout (function() {
             console.log(deckP1)
             console.log(deckP2)
             updateScores()
+            deckP2El.classList.replace('animate__flip', 'animate__flip')
+            deckP1El.classList.replace('animate__flip', 'animate__flip')
         }
 
    
                 
-       
+           
             
     
 

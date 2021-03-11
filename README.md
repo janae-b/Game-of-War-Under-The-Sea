@@ -30,3 +30,4 @@ JavaScript, HTML, CSS
 * Hide the war pile until it is used
 * Include audio
 * Add more “splash” to the cards
+* Have more cards be removed from the decks when war is won
