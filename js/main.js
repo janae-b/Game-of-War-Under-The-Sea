@@ -148,7 +148,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
         }
  
         function player1HighCard(card1, card2) {
-            messageDiv.innerText = "Player 🦀 wins this round"
+            messageDiv.innerText = "Player 🐡 wins this round"
             deckP1.push(card1, card2)
         }
         function player2HighCard(card1, card2) {
@@ -209,7 +209,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             const warCard2Value = CARD_VALUES[warCardPickedP2]
           if (warCard1Value < warCard2Value) {
           setTimeout (function() {
-            messageDiv.innerText = "Player 🦀 wins this war!"
+            messageDiv.innerText = "Player 🐡 wins this war!"
           }, 1000)
             console.log(`deck1.length before: ${deckP1.length}`);
             // p1RewardCards = deckP2.splice(0,3)
@@ -270,7 +270,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
     }
  
         function updateScores () {
-            scoreP1El.innerHTML = `Player 🦀 Score: ${deckP1.length}`
+            scoreP1El.innerHTML = `Player 🐡 Score: ${deckP1.length}`
             scoreP2El.innerHTML = `Player 🐙 Score: ${deckP2.length}`
         }
  
@@ -278,7 +278,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             if (deckP1.length === 0) {
                 messageDiv.innerHTML = "Player 🐙 is the Champion!"
             } else if (deckP2.length === 0) {
-                messageDiv.innerHTML = "Player 🦀 is the Champion!"
+                messageDiv.innerHTML = "Player 🐡 is the Champion!"
             }
         }
  
@@ -300,12 +300,14 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
            if (deckP1.length > deckP2.length) {
                deckP1.push(...deckP2)
                deckP2 = []
+               console.log(deckP2)
                updateScores()
                isGameOver()
                drawBtn.disabled = true
            } else if (deckP1.length < deckP2.length) {
                deckP2.push(...deckP1)
                deckP1 = []
+               console.log(deckP1)
                updateScores()
                isGameOver()
                drawBtn.disabled = true
