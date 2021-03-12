@@ -38,9 +38,8 @@ let endGameBtn = document.getElementById('endGameBtn')
 drawBtn.addEventListener('click', drawClick)
 shuffleBtn.addEventListener('click', newShuffle)
 endGameBtn.addEventListener('click', endGame)
-// Functions
  
-//-------------------Shuffle---------------//
+//-------------------Original Shuffle---------------//
  
 function shuffle(fullDeck) {
     let currentIndex = fullDeck.length, temporaryValue, randomIndex;
@@ -88,7 +87,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
         //   console.log(roundWinner)
     }
  
-//------------------------Render----------------------//
+//------------------------Render(Logic for the Cards)----------------------//
  
       function render(cardPickedP1, cardPickedP2) {
         //Player1 
@@ -128,7 +127,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
               deckP2El.classList.remove('back-blue')
           }    
      }  
-//---------------------roundWinner-------------------------
+//---------------------Logic for winner of the round-------------------------
           function roundWinner(card1, card2) {
               const card1Value = CARD_VALUES[card1]
               const card2Value = CARD_VALUES[card2]
@@ -211,27 +210,17 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
           setTimeout (function() {
             messageDiv.innerText = "Player 🐡 wins this war!"
           }, 1000)
-            console.log(`deck1.length before: ${deckP1.length}`);
-            // p1RewardCards = deckP2.splice(0,3)
             deckP1.push(warCardPickedP1, warCardPickedP2, card1, card2)
-            // deckP1.push(p1RewardCards)
-            console.log(deckP1)
-            console.log(`deck1.length after: ${deckP1.length}`);
         }  else if (warCard1Value > warCard2Value) {
           setTimeout (function() {  
             messageDiv.innerText = "Player 🐙 wins this war!"
           }, 1000)
-            // p2RewardCards = deckP1.splice(0,3)
             deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
-            // deckP2.push(p2RewardCards)
-            console.log(`deck2.length after: ${deckP2.length}`);
           } else {
             setTimeout (function() { 
               messageDiv.innerText = "War again? Player 🐙 stole the cards!!!"
             }, 1000)
-            //   p2RewardCards = deckP1.splice(0,3)
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
-            //   deckP2.push(p2RewardCards)
           }
       }
 //-----------------Removing cards------------------
@@ -260,6 +249,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             drawnCardPileP1 = [];
         }, 1000)
     }
+
         if (drawnCardPileP2.length > 0) {
             setTimeout (function() {
             drawnCardPileP2El.classList.add('animate__flipOutY', 'outline')
@@ -268,22 +258,22 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
            }, 1000)
         }
     }
- 
-        function updateScores () {
+ //----------------Updating the Scores----------------
+    function updateScores () {
             scoreP1El.innerHTML = `Player 🐡 Score: ${deckP1.length}`
             scoreP2El.innerHTML = `Player 🐙 Score: ${deckP2.length}`
-        }
- 
-        function isGameOver() {
-            if (deckP1.length === 0) {
+    }
+ //----------Check if there is a winner---------/
+    function isGameOver() {
+        if (deckP1.length === 0) {
                 messageDiv.innerHTML = "Player 🐙 is the Champion!"
-            } else if (deckP2.length === 0) {
+        } else if (deckP2.length === 0) {
                 messageDiv.innerHTML = "Player 🐡 is the Champion!"
-            }
         }
+    }
  
- 
-        function newShuffle () {
+ //-----------Resetting the game------------------
+    function newShuffle () {
             removeWarCards()
             removeRegularCards()
             let newDeck = []
@@ -294,25 +284,25 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             deckP2 = newDeck.splice(-halfOfDeck)
             updateScores()
             drawBtn.disabled = false
-       }
-
-       function endGame () {
-           if (deckP1.length > deckP2.length) {
+    }
+//-----------------Bored Button-------------------
+    function endGame () {
+        if (deckP1.length > deckP2.length) {
                deckP1.push(...deckP2)
                deckP2 = []
                console.log(deckP2)
                updateScores()
                isGameOver()
                drawBtn.disabled = true
-           } else if (deckP1.length < deckP2.length) {
+        } else if (deckP1.length < deckP2.length) {
                deckP2.push(...deckP1)
                deckP1 = []
                console.log(deckP1)
                updateScores()
                isGameOver()
                drawBtn.disabled = true
-           }
-       }
+        }
+    }
 
         
 

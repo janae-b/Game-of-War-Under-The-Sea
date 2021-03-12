@@ -2,12 +2,16 @@
 # Under the Sea War
 
 ## Instructions
-The game of war is one where you try to beat your opponents with the luck of the cards.  Each person draws a card and whoever has the higher value wins that round and gets both cards. The name of the game comes in when the players tie and have what is termed as a “war.” Whoever wins the war gets all four cards.
+* There are two players each with their own deck of 26 cards (a full deck split in half)
+* Each person draws a card from their deck and reveal the face value.
+* Whoever has the higher card value wins that round (Aces being the highest score)
+* If there is a tie, the players face off in a "war."  They each pull another card from the top of their deck and see which card is of higher value.  Whoever has the higher value wins all four cards that round.
+* Bonus in my game: if you feel that the game is dragging a bit, you can hit the "Bored?" button and whoever is in the lead with their score wins the game!
+
 Here is the game!
 
-
 ## Why I chose it:
-Growing up, my family would take a lot of two week vacations across the country in our van.  That meant a lot of freetime for my sister and I to play games.  One of the games that was easier to play in the van was war.  War can also take a bit of time to play so it was also a good time waster when sitting in the car for hours on end. I’ve also always liked the simplicity of War and that it is easy to teach to others.
+Growing up, my family would take a lot of two week vacations across the country in our van.  That meant a lot of freetime for my sister and me and we would try to find ways to pass the time in the van.  One of the games that was easier to play in the van was war.  War can also take a bit of time to play so it was also a good time waster when sitting in the car for hours on end. I’ve also always liked the simplicity of War and that it is easy to teach to others.
 
 
 ![Getting Started](Getting%20Started.png)
@@ -30,5 +34,4 @@ JavaScript, HTML, CSS
 * Hide the war pile until it is used
 * Include audio
 * Add more “splash” to the cards
-* Have more cards be removed from the decks when war is won
-* End Game button for longer games
+
