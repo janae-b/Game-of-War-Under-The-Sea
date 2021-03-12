@@ -6,6 +6,7 @@
 * Each person draws a card from their deck and reveal the face value.
 * Whoever has the higher card value wins that round (Aces being the highest score)
 * If there is a tie, the players face off in a "war."  They each pull another card from the top of their deck and see which card is of higher value.  Whoever has the higher value wins all four cards that round.
+* The winner is whoever gets all of the cards in the end.
 * Bonus in my game: if you feel that the game is dragging a bit, you can hit the "Bored?" button and whoever is in the lead with their score wins the game!
 
 [Here is the game!](http://war-game_jb.surge.sh/)
