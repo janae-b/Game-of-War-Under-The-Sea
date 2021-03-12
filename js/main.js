@@ -33,30 +33,29 @@ let drawBtn = document.getElementById('btn')
 let shuffleBtn = document.getElementById('shuffleBtn')
 let messageDiv = document.getElementById('message')
 let endGameBtn = document.getElementById('endGameBtn') 
-//---------------Event Listeners------------------------//
+//---------------------------------Event Listeners------------------------//
  
 drawBtn.addEventListener('click', drawClick)
 shuffleBtn.addEventListener('click', newShuffle)
 endGameBtn.addEventListener('click', endGame)
  
-//-------------------Original Shuffle---------------//
+//-------------------------------Original Shuffle--------------------------//
  
 function shuffle(fullDeck) {
     let currentIndex = fullDeck.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
         temporaryValue = fullDeck[currentIndex];
         fullDeck[currentIndex] = fullDeck[randomIndex]
         fullDeck[randomIndex] = temporaryValue
     }
     return fullDeck;
 }
-//----------------------Beginning of game------------//
+//----------------------Beginning of game------------------------//
 shuffle(fullDeck)
 
-//-----------Splitting the big deck into two decks---------//    
+//-----------Splitting the big deck into two decks-----------------//    
 let halfOfDeck = Math.floor(fullDeck.length / 2)
 deckP1 = fullDeck.splice(halfOfDeck)
 deckP2 = fullDeck.splice(-halfOfDeck)
@@ -65,26 +64,20 @@ deckP2 = fullDeck.splice(-halfOfDeck)
 deckP2El.classList.replace('animate__flip', 'animate__flip')
 deckP1El.classList.replace('animate__flip', 'animate__flip')
  
-//-------------Drawing the two cards---------//
+//-------------------Drawing the two cards----------------------------//
  
     function drawClick(){
         removeWarCards()
         if (deckP1.length > 0) {
-          // Assign a random card to a variable
           cardPickedP1 = deckP1.splice(0, 1);
-          console.log(`Player1 card is ${cardPickedP1}`)
-          // Add the picked card to deck 2
           drawnCardPileP1.push(cardPickedP1)
-          console.log(drawnCardPileP1)}
+        }
          if (deckP2.length > 0) {
            cardPickedP2 = deckP2.splice(0, 1);
-           console.log(`Player2 card is ${cardPickedP2}`)
            drawnCardPileP2.push(cardPickedP2)
-           console.log(drawnCardPileP2)
          }
           render(cardPickedP1, cardPickedP2)
           roundWinner(cardPickedP1, cardPickedP2)
-        //   console.log(roundWinner)
     }
  
 //------------------------Render(Logic for the Cards)----------------------//
@@ -127,7 +120,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
               deckP2El.classList.remove('back-blue')
           }    
      }  
-//---------------------Logic for winner of the round-------------------------
+//---------------------Logic for winner of the round------------------------------//
           function roundWinner(card1, card2) {
               const card1Value = CARD_VALUES[card1]
               const card2Value = CARD_VALUES[card2]
@@ -154,7 +147,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             messageDiv.innerText = "Player 🐙 wins this round"
             deckP2.push(card1, card2)
         } 
-//---------------Drawing for the War Card-------------------------
+//-------------------------Drawing for the War Card-------------------------//
         function cardsTie(card1, card2) {
             messageDiv.innerText = "WAR!!!!!"
             if (deckP1.length > 0) {
@@ -203,7 +196,6 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
         } 
  
         function warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2) {
-            console.log("function warRoundWinner triggered")
             const warCard1Value = CARD_VALUES[warCardPickedP1]
             const warCard2Value = CARD_VALUES[warCardPickedP2]
           if (warCard1Value < warCard2Value) {
@@ -223,7 +215,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
               deckP2.push(warCardPickedP1, warCardPickedP2, card1, card2)
           }
       }
-//-----------------Removing cards------------------
+//-------------------------------Removing cards----------------------------//
     function removeWarCards () {
         if (warDrawnCardPileP1.length > 0) {
             setTimeout (function() {
@@ -258,12 +250,12 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
            }, 1000)
         }
     }
- //----------------Updating the Scores----------------
+ //--------------------------Updating the Scores--------------------//
     function updateScores () {
             scoreP1El.innerHTML = `Player 🐡 Score: ${deckP1.length}`
             scoreP2El.innerHTML = `Player 🐙 Score: ${deckP2.length}`
     }
- //----------Check if there is a winner---------/
+ //----------------------Check if there is a winner---------------------/
     function isGameOver() {
         if (deckP1.length === 0) {
                 messageDiv.innerHTML = "Player 🐙 is the Champion!"
@@ -272,7 +264,7 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
         }
     }
  
- //-----------Resetting the game------------------
+ //--------------------------Resetting the game------------------//
     function newShuffle () {
             removeWarCards()
             removeRegularCards()
@@ -285,19 +277,17 @@ deckP1El.classList.replace('animate__flip', 'animate__flip')
             updateScores()
             drawBtn.disabled = false
     }
-//-----------------Bored Button-------------------
+//---------------------------Bored Button-----------------------//
     function endGame () {
         if (deckP1.length > deckP2.length) {
                deckP1.push(...deckP2)
                deckP2 = []
-               console.log(deckP2)
                updateScores()
                isGameOver()
                drawBtn.disabled = true
         } else if (deckP1.length < deckP2.length) {
                deckP2.push(...deckP1)
                deckP1 = []
-               console.log(deckP1)
                updateScores()
                isGameOver()
                drawBtn.disabled = true
