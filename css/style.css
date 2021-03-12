@@ -13,12 +13,11 @@ body {
     align-content: center;
     text-align: center;
     margin-top: 20px;
-    font-size: x-large;
   }
 
 h2{
      display: flex;
-     font-size: larger;
+     font-size: x-large;
      justify-content: center;
      align-items: center;
      align-content: center;
@@ -53,7 +52,7 @@ h2{
  }
 
  h3 {
-     font-size: larger;
+     font-size: lx-large;
      justify-content: center;
      align-items: center;
      align-content: center;

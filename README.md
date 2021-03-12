@@ -8,7 +8,7 @@
 * If there is a tie, the players face off in a "war."  They each pull another card from the top of their deck and see which card is of higher value.  Whoever has the higher value wins all four cards that round.
 * Bonus in my game: if you feel that the game is dragging a bit, you can hit the "Bored?" button and whoever is in the lead with their score wins the game!
 
-Here is the game!
+[Here is the game!](http://war-game_jb.surge.sh/)
 
 ## Why I chose it:
 Growing up, my family would take a lot of two week vacations across the country in our van.  That meant a lot of freetime for my sister and me and we would try to find ways to pass the time in the van.  One of the games that was easier to play in the van was war.  War can also take a bit of time to play so it was also a good time waster when sitting in the car for hours on end. I’ve also always liked the simplicity of War and that it is easy to teach to others.
@@ -34,4 +34,5 @@ JavaScript, HTML, CSS
 * Hide the war pile until it is used
 * Include audio
 * Add more “splash” to the cards
+* Tackle adding more cards when there is more than one war
 
