@@ -84,19 +84,19 @@ function render(cardPickedP1, cardPickedP2) {
   }
 //Player 2       
   if (drawnCardPileP2.length > 0 ) {
-  drawnCardPileP2El.classList.remove('outline')
+    drawnCardPileP2El.classList.remove('outline')
   }  
   if (drawnCardPileP2.length > 1) {
-  drawnCardPileP2El.classList.remove(drawnCardPileP2[drawnCardPileP2.length -2])
+    drawnCardPileP2El.classList.remove(drawnCardPileP2[drawnCardPileP2.length -2])
   }
   drawnCardPileP2El.classList.add(cardPickedP2,)
   if (drawnCardPileP2.length === 13) {
-  drawnCardPileP2El.classList.add('shadow')
-  deckP2El.classList.remove('shadow')
+    drawnCardPileP2El.classList.add('shadow')
+    deckP2El.classList.remove('shadow')
   }
   if (deckP2.length === 0) {
-  deckP2El.classList.add('outline')
-  deckP2El.classList.remove('back-blue')
+    deckP2El.classList.add('outline')
+    deckP2El.classList.remove('back-blue')
   }    
 }  
 //---------------------Logic for winner of the round------------------------------//
@@ -104,38 +104,38 @@ function roundWinner(card1, card2) {
 const card1Value = CARD_VALUES[card1]
 const card2Value = CARD_VALUES[card2]
   if (card1Value < card2Value) {
-  player1HighCard(card1, card2)
-  updateScores()
-  isGameOver()
+    player1HighCard(card1, card2)
+    updateScores()
+    isGameOver()
   } else if (card1Value > card2Value) {
-  player2HighCard(card1, card2)
-  updateScores()
-  isGameOver()
+    player2HighCard(card1, card2)
+    updateScores()
+    isGameOver()
   } else {
-  cardsTie(card1, card2)
-  updateScores()
-  isGameOver()
+    cardsTie(card1, card2)
+    updateScores()
+    isGameOver()
   }      
 } 
 function player1HighCard(card1, card2) {
-messageDiv.innerText = "Player 🐡 wins this round"
-deckP1.push(card1, card2)
+  messageDiv.innerText = "Player 🐡 wins this round"
+  deckP1.push(card1, card2)
 }
 function player2HighCard(card1, card2) {
-messageDiv.innerText = "Player 🐙 wins this round"
-deckP2.push(card1, card2)
+  messageDiv.innerText = "Player 🐙 wins this round"
+  deckP2.push(card1, card2)
 } 
 //-------------------------Drawing for the War Card-------------------------//
 function cardsTie(card1, card2) {
-messageDiv.innerText = "WAR!!!!!"
-  if (deckP1.length > 0) {
-  warCardPickedP1 = deckP1.splice(0, 1);
-  warDrawnCardPileP1.push(warCardPickedP1)
-  }
-  if (deckP2.length > 0) {
-  warCardPickedP2 = deckP2.splice(0, 1);
-  warDrawnCardPileP2.push(warCardPickedP2)
-  }
+  messageDiv.innerText = "WAR!!!!!"
+    if (deckP1.length > 0) {
+      warCardPickedP1 = deckP1.splice(0, 1);
+      warDrawnCardPileP1.push(warCardPickedP1)
+    }
+    if (deckP2.length > 0) {
+      warCardPickedP2 = deckP2.splice(0, 1);
+      warDrawnCardPileP2.push(warCardPickedP2)
+    }
   warRender(warCardPickedP1, warCardPickedP2)
   warRoundWinner(warCardPickedP1, warCardPickedP2, card1, card2)
 }
@@ -250,29 +250,21 @@ function newShuffle () {
   drawBtn.disabled = false
 }
 //---------------------------Bored Button-----------------------//
-    function endGame () {
-        if (deckP1.length > deckP2.length) {
-            deckP1.push(...deckP2)
-            deckP2 = []
-            updateScores()
-            isGameOver()
-            drawBtn.disabled = true
-        } else if (deckP1.length < deckP2.length) {
-            deckP2.push(...deckP1)
-            deckP1 = []
-            updateScores()
-            isGameOver()
-            drawBtn.disabled = true
-        }
-    }
-
-        
-
-   
-                
-           
-            
-    
+function endGame () {
+  if (deckP1.length > deckP2.length) {
+    deckP1.push(...deckP2)
+    deckP2 = []
+    updateScores()
+    isGameOver()
+    drawBtn.disabled = true
+  } else if (deckP1.length < deckP2.length) {
+    deckP2.push(...deckP1)
+    deckP1 = []
+    updateScores()
+    isGameOver()
+    drawBtn.disabled = true
+  }
+}
 
 
 
