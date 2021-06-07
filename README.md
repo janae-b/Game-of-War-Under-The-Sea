@@ -83,7 +83,6 @@ JavaScript, HTML, CSS
 ## Things to add in the future:
 
 * Better animations
-* More creative layout
 * Hide the war pile until it is used
 * Include audio
 * Add more “splash” to the cards
